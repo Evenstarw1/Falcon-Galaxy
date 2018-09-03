@@ -3,6 +3,7 @@ function Game(canvadId) {
   this.ctx = this.canvas.getContext("2d");
   this.fps = 60;
   this.background = new Background (this);
+  this.player = new Player (this);
 
   this.reset();
 }
@@ -12,8 +13,6 @@ Game.prototype.start = function() {
     this.clear();
 
     this.framesCounter++;
-
-    // controlamos que frameCounter no sea superior a 1000
     if (this.framesCounter > 1000) {
       this.framesCounter = 0;
     }
@@ -25,6 +24,8 @@ Game.prototype.start = function() {
 
 Game.prototype.reset = function() {
   this.background = new Background(this);
+  this.player = new Player(this);
+
 };
 
 Game.prototype.clear = function() {
@@ -33,6 +34,7 @@ Game.prototype.clear = function() {
 
 Game.prototype.draw = function() {
   this.background.draw();
+  this.player.draw();
 };
 
 Game.prototype.moveAll = function() {
