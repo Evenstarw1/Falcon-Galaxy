@@ -7,7 +7,7 @@ function Background(game) {
   this.x = 0;
   this.y = 0;
 
-  this.dx = 5;
+  this.dx = 12;
 }
 
 Background.prototype.draw = function() {
