@@ -1,21 +1,27 @@
 function Player(game) {
   this.game = game;
-  this.x = 100;
-  this.y = 250;
-  
 
   this.img = new Image();
-  this.img.src = "img/Halcon.png";  
+  this.img.src ="img/Halcon.png";  
 
-  this.w = 50;
-  this.h = 75;
+  this.x = 20;
+  this.y = 175;
 
-  this.vx = 1;
-  this.vy = 1;
+  this.width = 75;
+  this.height = 58;
+
+  this.vx = 10;
+  this.vy = 10;
 
 
   this.setListeners();
 }
+
+//Draw Image 
+Player.prototype.draw = function() {
+  this.game.ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+};
+
 
 //Key-code movimientos y ataque
 var LEFT_KEY = 37;
@@ -25,10 +31,6 @@ var DOWN_KEY = 40;
 
 var SPACE = 32;
 
-//Draw Image 
-Player.prototype.draw = function() {
-  this.game.ctx.drawImage(this.img.src);
-};
 
 
 //Movement
