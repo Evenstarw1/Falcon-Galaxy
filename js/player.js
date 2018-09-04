@@ -10,8 +10,8 @@ function Player(game) {
   this.width = 75;
   this.height = 58;
 
-  this.vx = 10;
-  this.vy = 10;
+  this.vx = 20;
+  this.vy = 20;
 
 
   this.setListeners();

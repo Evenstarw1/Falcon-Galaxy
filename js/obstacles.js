@@ -1,15 +1,17 @@
 function Obstacle(game) {
     this.game = game;
-    var random = Math.floor(Math.random() * 310);
+    var random = Math.floor(Math.random() * 100);
     this.x = this.game.canvas.width;
-    this.y = random;
+    this.y = 200 + random;
 
 
-    this.img = new Image();
-    this.img.src = "img/obstaculo.png";
+    this.imgBott = new Image();
+    this.imgBott.src = "img/obstaculos_stormtroopers.png";
+
+    
 
     this.width = 40;
-    this.height = 65;
+    this.height = 500;
 
     this.dx = 4;
   
@@ -17,7 +19,7 @@ function Obstacle(game) {
   
 
 Obstacle.prototype.draw = function () {
-    this.game.ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+    this.game.ctx.drawImage(this.imgBott, this.x, this.y, this.width, this.height);
 };
 
 Obstacle.prototype.move = function () {
