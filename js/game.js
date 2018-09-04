@@ -7,7 +7,7 @@ function Game(canvadId) {
   this.reset();
 }
 
-//START
+//START GAME
 
 Game.prototype.start = function () {
   this.interval = setInterval(function() {
@@ -26,11 +26,14 @@ Game.prototype.start = function () {
 
     this.clearObstacles();
 
-    // if (this.isCollision()) {
-    //   this.gameOver();
-    // }
+    if (this.isCollision()) {
+      this.gameOver();
+    }
+
   }.bind(this), 1000 / this.fps);
 };
+
+
 
 Game.prototype.stop = function() {
   clearInterval(this.interval);
@@ -44,6 +47,22 @@ Game.prototype.reset = function() {
   this.obstacles = [];
 };
 
+Game.prototype.isCollision = function() {
+    this.obstacles.some(
+      function(enemy) {
+        if (
+          this.player.x + this.player.width >= enemy.x + 28 &&
+          this.player.x < enemy.x + enemy.width &&
+          this.player.y + this.player.height >= enemy.y + 17 &&
+          this.player.y < enemy.y + enemy.height - 10
+        ) {
+          clearInterval(this.interval);
+          this.gameOver();
+        }
+      }.bind(this)
+    );
+};
+
 
 Game.prototype.clearObstacles = function() {
   this.obstacles = this.obstacles.filter(function(obstacle) {
@@ -51,6 +70,8 @@ Game.prototype.clearObstacles = function() {
   });
 };
 
+
+//CREAR OBSTACULOS
 Game.prototype.generateObstacle = function() {
   this.obstacles.push(new Obstacle(this));
 };
@@ -59,6 +80,7 @@ Game.prototype.clear = function () {
   this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 };
 
+//DIBUJAR SOBRE CANVAS
 Game.prototype.draw = function() {
   this.background.draw();
   this.player.draw();
@@ -66,7 +88,7 @@ Game.prototype.draw = function() {
 
 };
 
-
+//MOVIMIENTOS
 Game.prototype.moveAll = function () {
   this.background.move();
   this.obstacles.forEach(function(obstacle) { obstacle.move(); });
