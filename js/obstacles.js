@@ -1,20 +1,19 @@
 function Obstacle(game) {
     this.game = game;
-    var random = Math.floor(Math.random() * 360);
+    var random = Math.floor(Math.random() * 310);
     this.x = this.game.canvas.width;
-    this.y = 50 + random;
+    this.y = random;
 
 
     this.img = new Image();
-    this.img.src = "/img/obstaculo.png";
+    this.img.src = "img/obstaculo.png";
 
-    this.width = 60;
-    this.height = 100;
+    this.width = 40;
+    this.height = 65;
 
+    this.dx = 4;
   
-    this.dx = 10;
-  
-  }
+};
   
 
 Obstacle.prototype.draw = function () {

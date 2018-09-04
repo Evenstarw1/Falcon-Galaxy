@@ -17,7 +17,6 @@ Game.prototype.start = function () {
     if (this.framesCounter > 1000) {
       this.framesCounter = 0;
     }
-
     if (this.framesCounter % 60 === 0) {
       this.generateObstacle();
     }
@@ -25,7 +24,7 @@ Game.prototype.start = function () {
     this.moveAll();
     this.draw();
 
-    this.clearObstacles()
+    this.clearObstacles();
 
     // if (this.isCollision()) {
     //   this.gameOver();
@@ -38,11 +37,11 @@ Game.prototype.stop = function() {
 };
 
 
-Game.prototype.reset = function () {
+Game.prototype.reset = function() {
   this.background = new Background(this);
   this.player = new Player(this);
   this.framesCounter = 0;
-  this.obstacles= [];
+  this.obstacles = [];
 };
 
 
@@ -60,14 +59,16 @@ Game.prototype.clear = function () {
   this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 };
 
-Game.prototype.draw = function () {
+Game.prototype.draw = function() {
   this.background.draw();
   this.player.draw();
   this.obstacles.forEach(function(obstacle) { obstacle.draw(); });
+
 };
+
 
 Game.prototype.moveAll = function () {
   this.background.move();
   this.obstacles.forEach(function(obstacle) { obstacle.move(); });
 
-}
+};
