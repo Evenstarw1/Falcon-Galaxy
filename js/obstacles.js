@@ -23,6 +23,6 @@ Obstacle.prototype.draw = function () {
 
 };
 
-Obstacle.prototype.move = function () {
-    this.x -= this.dx;
+Obstacle.prototype.move = function (dxGame) {
+    this.x -= dxGame;
 };

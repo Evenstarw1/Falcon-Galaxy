@@ -2,6 +2,7 @@ function Game(canvadId) {
   this.canvas = document.getElementById(canvadId);
   this.ctx = this.canvas.getContext("2d");
   this.fps = 60;
+  this.dxGame = 4;
 
 
   this.reset();
@@ -131,9 +132,10 @@ Game.prototype.draw = function() {
 
 //MOVIMIENTOS
 Game.prototype.moveAll = function () {
-  this.background.move();
-  this.obstacles.forEach(function(obstacle) { obstacle.move(); });
-  this.epoints.forEach(function(points) { points.move(); });
+  this.dxGame += 0.004;
+  this.background.move(this.dxGame);
+  this.obstacles.forEach(function (obstacle) { obstacle.move(this.dxGame); }.bind(this));
+  this.epoints.forEach(function (points) { points.move(this.dxGame); }.bind(this));
 };
 
 //SCORE PUNTOS

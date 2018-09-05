@@ -18,6 +18,6 @@ Points.prototype.draw = function () {
 
 };
 
-Points.prototype.move = function () {
-    this.x -= this.dx;
+Points.prototype.move = function (dxGame) {
+    this.x -= dxGame;
 };
