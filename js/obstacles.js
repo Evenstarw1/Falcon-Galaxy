@@ -1,8 +1,8 @@
 function Obstacle(game) {
     this.game = game;
-    var random = Math.floor(Math.random() * 100);
+    var random = Math.floor(Math.random() * 150);
     this.x = this.game.canvas.width;
-    this.y = 200 + random;
+    this.y = 160 + random;
 
 
     this.img = new Image();

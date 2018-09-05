@@ -35,6 +35,13 @@ Game.prototype.start = function () {
       this.gameOver();
     }
 
+    // if (this.pCollision()) {
+    //   this.takePoints();
+    // }
+
+
+    // this.score += 10;
+
   }.bind(this), 1000 / this.fps);
 };
 
@@ -42,6 +49,13 @@ Game.prototype.stop = function() {
   clearInterval(this.interval);
 };
 
+Game.prototype.gameOver = function() {
+  this.stop();
+};
+
+// Game.prototype.takePoints = function() {
+
+// };
 
 Game.prototype.reset = function() {
   this.background = new Background(this);
@@ -68,6 +82,19 @@ Game.prototype.isCollision = function() {
     );
 };
 
+Game.prototype.pCollision = function() {
+  this.epoints.some(function(points) {
+    if (
+      this.player.x + this.player.width >= points.x &&
+        this.player.x < points.x + points.width &&
+        this.player.y + this.player.height >= points.y &&
+          this.player.y < points.y + points.height) 
+          {
+            this.epoints.splice(index, 1);
+      }
+    }.bind(this)
+  );
+};
 
 
 
@@ -77,14 +104,15 @@ Game.prototype.clearObstacles = function() {
   });
 };
 
-Game.prototype.clearPoints = function() {
-  this.epoints = this.epoints.filter(function(points) {
+Game.prototype.clearPoints = function () {
+  this.epoints = this.epoints.filter(function (points) {
     return points.x >= 0;
   });
 };
 
 
-//CREAR OBSTACULOS
+
+//CREAR OBSTACULOS/PUNTOS
 Game.prototype.generateObstacle = function() {
   this.obstacles.push(new Obstacle(this));
 };

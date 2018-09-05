@@ -7,8 +7,8 @@ function Points(game) {
     this.img = new Image();
     this.img.src = "img/R2D2.png";
 
-    this.width = 20;
-    this.height = 26;
+    this.width = 30;
+    this.height = 39;
 
     this.dx = 4;
 }
