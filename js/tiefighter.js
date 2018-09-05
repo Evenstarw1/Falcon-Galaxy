@@ -1,8 +1,8 @@
-function Tiefigher(game) {
+function Tiefighter(game) {
     this.game = game;
-    var random = Math.floor(Math.random() * 150);
+    var random = Math.floor(Math.random() * 200);
     this.x = this.game.canvas.width;
-    this.y = 160 + random;
+    this.y = 10 + random;
   
     this.img = new Image();
     this.img.src ="img/tie_fighter.png";  
@@ -16,7 +16,7 @@ function Tiefigher(game) {
   };
 
 
-Tiefighter.prototype.move = function () {
-  this.x -= this.dx;
+Tiefighter.prototype.move = function (dxGame) {
+  this.x -= dxGame;
 };
   
