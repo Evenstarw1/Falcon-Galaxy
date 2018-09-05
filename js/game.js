@@ -3,6 +3,9 @@ function Game(canvadId) {
   this.ctx = this.canvas.getContext("2d");
   this.fps = 60;
   this.dxGame = 4;
+  this.mainSong = new Audio();
+  this.mainSong.volume = 0.2;
+  this.mainSong.src = "music/background_song.mp3";
 
 
   this.reset();
@@ -10,6 +13,9 @@ function Game(canvadId) {
 
 //START GAME
 Game.prototype.start = function () {
+  this.mainSong.play();
+
+
   this.interval = setInterval(function() {
     this.clear();
 
@@ -76,6 +82,20 @@ Game.prototype.isCollision = function() {
         }
       }.bind(this)
     );
+};
+
+Game.prototype.isCollisionextra = function() {
+  this.obstacles.some(function(obstacle) {
+      if (
+        this.player.x + this.player.width >= obstacle.x + 10 &&
+        this.player.x < obstacle.x + obstacle.width &&
+        this.player.y + this.player.height >= obstacle.y + 5
+      ) {
+        clearInterval(this.interval);
+        this.gameOver();
+      }
+    }.bind(this)
+  );
 };
 
 Game.prototype.pCollision = function() {
