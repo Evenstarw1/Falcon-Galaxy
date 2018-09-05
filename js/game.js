@@ -9,7 +9,6 @@ function Game(canvadId) {
 
 //START GAME
 Game.prototype.start = function () {
-  var date = 
   this.interval = setInterval(function() {
     this.clear();
 
