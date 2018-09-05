@@ -8,8 +8,8 @@ function Game(canvadId) {
 }
 
 //START GAME
-
 Game.prototype.start = function () {
+  var date = 
   this.interval = setInterval(function() {
     this.clear();
 
@@ -22,7 +22,7 @@ Game.prototype.start = function () {
     if (this.framesCounter % 60 === 0) {
       this.generateObstacle();
     } 
-    if (this.framesCounter % 160 === 0) {
+    if (this.framesCounter % 200 === 0) {
     this.generatePoints();
     }
 
@@ -39,11 +39,10 @@ Game.prototype.start = function () {
       this.score += 0.01;
     }
 
-
-   
-
   }.bind(this), 1000 / this.fps);
 };
+
+
 
 Game.prototype.stop = function() {
   clearInterval(this.interval);
@@ -53,9 +52,6 @@ Game.prototype.gameOver = function() {
   this.stop();
 };
 
-// Game.prototype.takePoints = function() {
-//   this.score += 0.01;
-// };
 
 Game.prototype.reset = function() {
   this.background = new Background(this);
@@ -68,7 +64,6 @@ Game.prototype.reset = function() {
 
 
 //Colisiones 1Obstaculos 2Puntos
-
 Game.prototype.isCollision = function() {
     this.obstacles.some(function(obstacle) {
         if (
@@ -98,8 +93,7 @@ Game.prototype.pCollision = function() {
   );
 };
 
-
-
+//CLEAR
 Game.prototype.clearObstacles = function() {
   this.obstacles = this.obstacles.filter(function(obstacle) {
     return obstacle.x >= 0;
@@ -113,7 +107,6 @@ Game.prototype.clearPoints = function () {
 };
 
 
-
 //CREAR OBSTACULOS/PUNTOS
 Game.prototype.generateObstacle = function() {
   this.obstacles.push(new Obstacle(this));
@@ -122,7 +115,6 @@ Game.prototype.generateObstacle = function() {
 Game.prototype.generatePoints = function() {
   this.epoints.push(new Points(this));
 };
-
 
 
 Game.prototype.clear = function () {
