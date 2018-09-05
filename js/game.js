@@ -92,6 +92,7 @@ Game.prototype.pCollision = function() {
           this.player.y < epoints.y + epoints.height) 
           {
           this.epoints.splice(index, 1);
+          this.score += 10;
       }
     }.bind(this)
   );
