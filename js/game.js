@@ -35,12 +35,12 @@ Game.prototype.start = function () {
       this.gameOver();
     }
 
-    // if (this.pCollision()) {
-    //   this.takePoints();
-    // }
+    if (this.pCollision()) {
+      this.score += 0.01;
+    }
 
 
-    // this.score += 10;
+   
 
   }.bind(this), 1000 / this.fps);
 };
@@ -54,7 +54,7 @@ Game.prototype.gameOver = function() {
 };
 
 // Game.prototype.takePoints = function() {
-
+//   this.score += 0.01;
 // };
 
 Game.prototype.reset = function() {
@@ -63,6 +63,7 @@ Game.prototype.reset = function() {
   this.framesCounter = 0;
   this.obstacles = [];
   this.epoints = [];
+  this.score = 0;
 };
 
 
@@ -83,14 +84,14 @@ Game.prototype.isCollision = function() {
 };
 
 Game.prototype.pCollision = function() {
-  this.epoints.some(function(points) {
+  return this.epoints.forEach(function(epoints, index) {
     if (
-      this.player.x + this.player.width >= points.x &&
-        this.player.x < points.x + points.width &&
-        this.player.y + this.player.height >= points.y &&
-          this.player.y < points.y + points.height) 
+      this.player.x + this.player.width >= epoints.x &&
+        this.player.x < epoints.x + epoints.width &&
+        this.player.y + this.player.height >= epoints.y &&
+          this.player.y < epoints.y + epoints.height) 
           {
-            this.epoints.splice(index, 1);
+          this.epoints.splice(index, 1);
       }
     }.bind(this)
   );
@@ -133,7 +134,7 @@ Game.prototype.draw = function() {
   this.player.draw();
   this.obstacles.forEach(function(obstacle) { obstacle.draw(); });
   this.epoints.forEach(function(points) {points.draw(); });
-
+  this.drawScore();  
 };
 
 //MOVIMIENTOS
@@ -142,3 +143,10 @@ Game.prototype.moveAll = function () {
   this.obstacles.forEach(function(obstacle) { obstacle.move(); });
   this.epoints.forEach(function(points) { points.move(); });
 };
+
+//SCORE PUNTOS
+Game.prototype.drawScore = function() {
+  this.ctx.font = "50px sans-serif";
+  this.ctx.fillStyle = "white";
+  this.ctx.fillText(Math.floor(this.score), 50, 50);
+}
