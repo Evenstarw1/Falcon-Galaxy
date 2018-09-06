@@ -18,12 +18,6 @@ Points.prototype.draw = function () {
 
 };
 
-this.imageStar = new Image ();
-this.imageStar.src = "img/star.gif";
-Points.prototype.star = function() {
-    this.game.ctx.drawImage(this.imageStar, this.x, this.y, this.width, this.height);
-};
-
 
 
 Points.prototype.move = function (dxGame) {

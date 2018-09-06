@@ -75,7 +75,6 @@ Game.prototype.gameOver = function() {
   this.mainSong.pause();
   this.gameOverSong.play();
   this.gameover.draw();
-
 };
 
 
@@ -180,7 +179,7 @@ Game.prototype.draw = function() {
   this.obstacles.forEach(function(obstacle) { obstacle.draw(); });
   this.epoints.forEach(function(points) {points.draw(); });
   this.extraobstacle.forEach(function(tiefighter) {tiefighter.draw(); });
-  this.drawScore();  
+  this.drawScore();
 };
 
 //MOVIMIENTOS

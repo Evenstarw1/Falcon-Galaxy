@@ -29,8 +29,6 @@ var TOP_KEY = 38;
 var RIGTH_KEY = 39;
 var DOWN_KEY = 40;
 
-var SPACE = 32;
-
 
 
 //Movement
