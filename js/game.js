@@ -74,12 +74,14 @@ Game.prototype.gameOver = function() {
   this.stop();
   this.mainSong.pause();
   this.gameOverSong.play();
+  this.gameover.draw();
 
 };
 
 
 Game.prototype.reset = function() {
   this.background = new Background(this);
+  this.gameover = new Gameover (this);
   this.player = new Player(this);
   this.framesCounter = 0;
   this.obstacles = [];
@@ -130,7 +132,6 @@ Game.prototype.pCollision = function() {
           this.pointsSong.play();
           this.epoints.splice(index, 1);
           this.score += 10;
-
       }
     }.bind(this)
   );
@@ -189,7 +190,6 @@ Game.prototype.moveAll = function () {
   this.obstacles.forEach(function (obstacle) { obstacle.move(this.dxGame); }.bind(this));
   this.epoints.forEach(function (points) { points.move(this.dxGame); }.bind(this));
   this.extraobstacle.forEach(function (tiefighter) { tiefighter.move(this.dxGame); }.bind(this));
-
 };
 
 //SCORE PUNTOS
@@ -197,4 +197,4 @@ Game.prototype.drawScore = function() {
   this.ctx.font = "50px sans-serif";
   this.ctx.fillStyle = "white";
   this.ctx.fillText(Math.floor(this.score), 50, 50);
-}
+};
