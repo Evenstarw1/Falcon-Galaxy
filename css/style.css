@@ -15,11 +15,7 @@ canvas {
     background-color: black;
 }
 
-/* button{
-   /*  background-color: rgba(201, 196, 196, 0.80); */
-    /* background: url("/img/startbutton.png");
-    width: 100px;
-    height: 80px;
-    border-radius: 8px; */
-
-/* } */ 
+.buttons {
+    margin-left: 90px;
+    margin-top: 40px;
+}

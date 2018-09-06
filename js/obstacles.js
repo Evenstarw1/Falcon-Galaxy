@@ -8,15 +8,15 @@ function Obstacle(game) {
     this.img = new Image();
     this.img.src = "img/obstaculos_stormtroopers.png";
 
-    
+
     this.width = 40;
     this.height = 500;
 
 
     this.dx = 4;
-  
+
 };
-  
+
 
 Obstacle.prototype.draw = function () {
     this.game.ctx.drawImage(this.img, this.x, this.y, this.width, this.height);

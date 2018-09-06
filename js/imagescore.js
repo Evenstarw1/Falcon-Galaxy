@@ -2,7 +2,7 @@ function Imagescore(game) {
     this.game = game;
     this.x = 25;
     this.y = 50;
-    
+
     this.img = new Image();
     this.img.src = "img/R2D2.png";
 
