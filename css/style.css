@@ -19,3 +19,15 @@ canvas {
     margin-left: 90px;
     margin-top: 40px;
 }
+
+#start-button {
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 8px #999;
+}
+
+#start-button:hover {
+    box-shadow: 0 5px rgb(62, 61, 61);
+    transform: translateY(4px);
+}

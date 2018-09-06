@@ -8,7 +8,7 @@ function Game(canvadId) {
   this.mainSong.src = "music/background_song.mp3";
   this.pointsSong = new Audio();
   this.pointsSong.volume = 0.2;
-  this.pointsSong.src = "music/points.mp3";
+  this.pointsSong.src = "music/r2d2-sound.mp3";
   this.gameOverSong = new Audio();
   this.gameOverSong.volume = 0.2;
   this.gameOverSong.src = "music/sound-game-over.mp3";
@@ -30,15 +30,12 @@ Game.prototype.start = function () {
     if (this.framesCounter > 1000) {
       this.framesCounter = 0;
     }
-
     if (this.framesCounter % 60 === 0) {
       this.generateObstacle();
     }
-
     if (this.score >= 60 && this.framesCounter % 100 === 0) {
       this.generateExtraObstacle();
     }
-
     if (this.framesCounter % 200 === 0) {
       this.generatePoints();
     }
@@ -52,11 +49,9 @@ Game.prototype.start = function () {
     if (this.isCollision()) {
       this.gameOver();
     }
-
     if (this.isCollisionextra()) {
       this.gameOver();
     }
-
     if (this.pCollision()) {
       this.score += 0.01;
     }
