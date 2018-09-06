@@ -22,7 +22,7 @@ Game.prototype.start = function () {
   this.mainSong.play();
 
 
-  this.interval = setInterval(function() {
+  this.interval = setInterval(function () {
     this.clear();
 
     this.framesCounter++;
@@ -33,14 +33,14 @@ Game.prototype.start = function () {
 
     if (this.framesCounter % 60 === 0) {
       this.generateObstacle();
-    } 
+    }
 
     if (this.score >= 60 && this.framesCounter % 100 === 0) {
       this.generateExtraObstacle();
-    } 
+    }
 
     if (this.framesCounter % 200 === 0) {
-    this.generatePoints();
+      this.generatePoints();
     }
 
     this.moveAll();
@@ -66,11 +66,11 @@ Game.prototype.start = function () {
 
 
 
-Game.prototype.stop = function() {
+Game.prototype.stop = function () {
   clearInterval(this.interval);
 };
 
-Game.prototype.gameOver = function() {
+Game.prototype.gameOver = function () {
   this.stop();
   this.mainSong.pause();
   this.gameOverSong.play();
@@ -78,9 +78,9 @@ Game.prototype.gameOver = function() {
 };
 
 
-Game.prototype.reset = function() {
+Game.prototype.reset = function () {
   this.background = new Background(this);
-  this.gameover = new Gameover (this);
+  this.gameover = new Gameover(this);
   this.player = new Player(this);
   this.framesCounter = 0;
   this.obstacles = [];
@@ -91,54 +91,52 @@ Game.prototype.reset = function() {
 
 
 //Colisiones 1Obstaculos 2Puntos
-Game.prototype.isCollision = function() {
-    this.obstacles.some(function(obstacle) {
-        if (
-          this.player.x + this.player.width >= obstacle.x + 10 &&
-          this.player.x < obstacle.x + obstacle.width &&
-          this.player.y + this.player.height >= obstacle.y + 5
-        ) {
-          clearInterval(this.interval);
-          this.gameOver();
-        }
-      }.bind(this)
-    );
-};
-
-Game.prototype.isCollisionextra = function() {
-  this.extraobstacle.some(function(tiefighter) {
-      if (
-        this.player.x + this.player.width >= tiefighter.x + 10 &&
-        this.player.x < tiefighter.x + tiefighter.width &&
-        this.player.y + this.player.height >= tiefighter.y + 5 &&
-        this.player.y < tiefighter.y + tiefighter.height)
-         {
-        clearInterval(this.interval);
-        this.gameOver();
-            }
-    }.bind(this)
+Game.prototype.isCollision = function () {
+  this.obstacles.some(function (obstacle) {
+    if (
+      this.player.x + this.player.width >= obstacle.x + 10 &&
+      this.player.x < obstacle.x + obstacle.width &&
+      this.player.y + this.player.height >= obstacle.y + 5
+    ) {
+      clearInterval(this.interval);
+      this.gameOver();
+    }
+  }.bind(this)
   );
 };
 
-Game.prototype.pCollision = function() {
-  return this.epoints.forEach(function(epoints, index) {
+Game.prototype.isCollisionextra = function () {
+  this.extraobstacle.some(function (tiefighter) {
+    if (
+      this.player.x + this.player.width >= tiefighter.x + 10 &&
+      this.player.x < tiefighter.x + tiefighter.width &&
+      this.player.y + this.player.height >= tiefighter.y + 5 &&
+      this.player.y < tiefighter.y + tiefighter.height) {
+      clearInterval(this.interval);
+      this.gameOver();
+    }
+  }.bind(this)
+  );
+};
+
+Game.prototype.pCollision = function () {
+  return this.epoints.forEach(function (epoints, index) {
     if (
       this.player.x + this.player.width >= epoints.x &&
-        this.player.x < epoints.x + epoints.width &&
-        this.player.y + this.player.height >= epoints.y &&
-          this.player.y < epoints.y + epoints.height) 
-          {
-          this.pointsSong.play();
-          this.epoints.splice(index, 1);
-          this.score += 10;
-      }
-    }.bind(this)
+      this.player.x < epoints.x + epoints.width &&
+      this.player.y + this.player.height >= epoints.y &&
+      this.player.y < epoints.y + epoints.height) {
+      this.pointsSong.play();
+      this.epoints.splice(index, 1);
+      this.score += 10;
+    }
+  }.bind(this)
   );
 };
 
 //CLEAR
-Game.prototype.clearObstacles = function() {
-  this.obstacles = this.obstacles.filter(function(obstacle) {
+Game.prototype.clearObstacles = function () {
+  this.obstacles = this.obstacles.filter(function (obstacle) {
     return obstacle.x >= 0;
   });
 };
@@ -149,22 +147,22 @@ Game.prototype.clearPoints = function () {
   });
 };
 
-Game.prototype.clearExtraObstacles = function() {
-  this.extraobstacle = this.extraobstacle.filter(function(tiefighter) {
+Game.prototype.clearExtraObstacles = function () {
+  this.extraobstacle = this.extraobstacle.filter(function (tiefighter) {
     return tiefighter.x >= 0;
   });
 };
 
 //CREAR OBSTACULOS/PUNTOS
-Game.prototype.generateObstacle = function() {
+Game.prototype.generateObstacle = function () {
   this.obstacles.push(new Obstacle(this));
 };
 
-Game.prototype.generatePoints = function() {
+Game.prototype.generatePoints = function () {
   this.epoints.push(new Points(this));
 };
 
-Game.prototype.generateExtraObstacle = function() {
+Game.prototype.generateExtraObstacle = function () {
   this.extraobstacle.push(new Tiefighter(this));
 };
 
@@ -173,12 +171,12 @@ Game.prototype.clear = function () {
 };
 
 //DIBUJAR SOBRE CANVAS
-Game.prototype.draw = function() {
+Game.prototype.draw = function () {
   this.background.draw();
   this.player.draw();
-  this.obstacles.forEach(function(obstacle) { obstacle.draw(); });
-  this.epoints.forEach(function(points) {points.draw(); });
-  this.extraobstacle.forEach(function(tiefighter) {tiefighter.draw(); });
+  this.obstacles.forEach(function (obstacle) { obstacle.draw(); });
+  this.epoints.forEach(function (points) { points.draw(); });
+  this.extraobstacle.forEach(function (tiefighter) { tiefighter.draw(); });
   this.drawScore();
 };
 
@@ -192,7 +190,7 @@ Game.prototype.moveAll = function () {
 };
 
 //SCORE PUNTOS
-Game.prototype.drawScore = function() {
+Game.prototype.drawScore = function () {
   this.ctx.font = "50px sans-serif";
   this.ctx.fillStyle = "white";
   this.ctx.fillText(Math.floor(this.score), 50, 50);

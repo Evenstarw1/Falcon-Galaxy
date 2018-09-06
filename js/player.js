@@ -33,9 +33,16 @@ var DOWN_KEY = 40;
 Player.prototype.setListeners = function () {
   document.onkeydown = function (event) {
     switch (event.keyCode) {
-      case LEFT_KEY: this.x -= this.vx; break;
+      case LEFT_KEY: 
+      if (this.x <= 0) {
+        break; }
+      this.x -= this.vx; break;
       case TOP_KEY: this.y -= this.vy; break;
-      case RIGTH_KEY: this.x += this.vx; break;
+      case RIGTH_KEY: 
+      if (this.x + this.width >= this.game.canvas.width)
+      { break; }
+      this.x += this.vx; break;
+      
       case DOWN_KEY: this.y += this.vy; break;
     };
   }.bind(this);
