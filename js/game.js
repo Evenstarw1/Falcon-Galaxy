@@ -5,10 +5,10 @@ function Game(canvadId) {
   this.dxGame = 4;
   this.mainSong = new Audio();
   this.mainSong.volume = 0.2;
-  this.mainSong.src = "music/background_song.wav";
+  this.mainSong.src = "music/background_song.mp3s";
   this.pointsSong = new Audio();
   this.pointsSong.volume = 0.2;
-  this.pointsSong.src = "music/points.wav";
+  this.pointsSong.src = "music/points.mp3";
   this.gameOverSong = new Audio();
   this.gameOverSong.volume = 0.2;
   this.gameOverSong.src = "music/sound-game-over.mp3";
