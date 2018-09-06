@@ -35,7 +35,7 @@ Game.prototype.start = function () {
       this.generateObstacle();
     } 
 
-    if (this.score >= 60 && this.framesCounter % 150 === 0) {
+    if (this.score >= 60 && this.framesCounter % 100 === 0) {
       this.generateExtraObstacle();
     } 
 
@@ -114,8 +114,7 @@ Game.prototype.isCollisionextra = function() {
          {
         clearInterval(this.interval);
         this.gameOver();
-        this.imageStar();
-      }
+            }
     }.bind(this)
   );
 };
