@@ -34,16 +34,32 @@ Player.prototype.setListeners = function () {
   document.onkeydown = function (event) {
     switch (event.keyCode) {
       case LEFT_KEY: 
-      if (this.x <= 0) {
-        break; }
-      this.x -= this.vx; break;
-      case TOP_KEY: this.y -= this.vy; break;
+      if (this.x <= 0) 
+      {
+        break; 
+      }
+      this.x -= this.vx; 
+      break;
+      case TOP_KEY:
+      if (this.y <= 0) 
+      {
+        break;
+      }
+      this.y -= this.vy; break;
       case RIGTH_KEY: 
       if (this.x + this.width >= this.game.canvas.width)
-      { break; }
-      this.x += this.vx; break;
+      { 
+        break; 
+      }
+      this.x += this.vx; 
+      break;
       
-      case DOWN_KEY: this.y += this.vy; break;
+      case DOWN_KEY: 
+      if (this.y + this.height >= this.game.canvas.height) 
+      {
+        break; 
+      } 
+      this.y += this.vy; break;
     };
   }.bind(this);
 };
