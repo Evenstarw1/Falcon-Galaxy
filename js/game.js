@@ -114,6 +114,7 @@ Game.prototype.isCollisionextra = function() {
          {
         clearInterval(this.interval);
         this.gameOver();
+        this.imageStar();
       }
     }.bind(this)
   );
