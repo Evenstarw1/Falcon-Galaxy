@@ -7,7 +7,7 @@ function Game(canvadId) {
   this.mainSong.volume = 0.2;
   this.mainSong.src = "music/background_song.mp3";
   this.pointsSong = new Audio();
-  this.pointsSong.volume = 0.2;
+  this.pointsSong.volume = 0.1;
   this.pointsSong.src = "music/r2d2-sound.mp3";
   this.gameOverSong = new Audio();
   this.gameOverSong.volume = 0.2;
@@ -177,7 +177,7 @@ Game.prototype.draw = function () {
 
 //MOVIMIENTOS
 Game.prototype.moveAll = function () {
-  this.dxGame += 0.004;
+  this.dxGame += 0.003;
   this.background.move(this.dxGame);
   this.obstacles.forEach(function (obstacle) { obstacle.move(this.dxGame); }.bind(this));
   this.epoints.forEach(function (points) { points.move(this.dxGame); }.bind(this));
