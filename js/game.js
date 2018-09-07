@@ -14,11 +14,12 @@ function Game(canvadId) {
   this.gameOverSong.src = "music/sound-game-over.mp3";
 
 
-  this.reset();
 }
 
 //START GAME
 Game.prototype.start = function () {
+  this.stop();
+  this.reset();
   this.mainSong.play();
 
 
@@ -55,7 +56,7 @@ Game.prototype.start = function () {
     if (this.pCollision()) {
       this.score += 0.01;
     }
-
+    
   }.bind(this), 1000 / this.fps);
 };
 
@@ -78,6 +79,7 @@ Game.prototype.reset = function () {
   this.gameover = new Gameover(this);
   this.player = new Player(this);
   this.framesCounter = 0;
+  this.dxGame = 4;
   this.obstacles = [];
   this.epoints = [];
   this.extraobstacle = [];
@@ -128,6 +130,7 @@ Game.prototype.pCollision = function () {
   }.bind(this)
   );
 };
+
 
 //CLEAR
 Game.prototype.clearObstacles = function () {
